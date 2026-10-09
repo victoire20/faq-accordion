@@ -23,18 +23,16 @@ body {
 
     background-image: url('./images/background-pattern-mobile.svg');
 
-    /* Positionnement parfait : collé en haut, centré horizontalement */
     background-position: center top;
     background-repeat: no-repeat;
 
-    /* Ajuste seulement la largeur et laisse l'image garder sa hauteur naturelle */
-    /**background-size: 100% auto;**/
+    background-size: 100% auto;
 }
 
 @media (min-width: 376px) {
     body {
         background-image: url('./images/background-pattern-desktop.svg');
-        /**background-size: 100% auto;**/
+        background-size: 100% auto;
     }
 }
 
