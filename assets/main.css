@@ -42,7 +42,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     flex-direction: column;
-    gap: 30px;
+    gap: 1.875rem;
 }
 
 .card {
@@ -52,7 +52,7 @@ body {
     border-radius: .5rem;
 }
 
-@media (min-width: 376px) {
+@media (min-width: 23.5rem) {
     .card {
         border-radius: 1rem;
     }
@@ -179,4 +179,13 @@ body {
     grid-template-rows: 1fr;
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .accordion-button::after,
+    .accordion-button.accordion-button-rotate::after,
+    .accordion-collapse {
+        animation: none;
+        transition: none;
+    }
 }
