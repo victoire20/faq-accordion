@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Frontend Mentor | FAQ accordion</title>
+    <link rel="stylesheet" href="./assets/reset.css">
+    <link rel="stylesheet" href="./assets/main.css">
+    <style>
+        .attribution { font-size: 11px; text-align: center; }
+        .attribution a { color: hsl(228, 45%, 44%); }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="card">
+            <div class="card-title">
+                <img src="./assets/images/icon-star.svg" alt="star icon">
+                <h1>FAQs</h1>
+            </div>
+            <div class="card-body">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                What is Frontend Mentor, and how will it help me?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Frontend Mentor offers realistic coding challenges to help developers improve their
+                                frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for
+                                all levels and ideal for portfolio building.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Is Frontend Mentor free?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Yes, Frontend Mentor offers both free and premium coding challenges, with the free
+                                option providing access to a range of projects suitable for all skill levels.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Can I use Frontend Mentor projects in my portfolio?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent
+                                way to showcase your skills to potential employers!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                How can I get help if I'm stuck on a Frontend Mentor challenge?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                The best place to get help is inside Frontend Mentor's Discord community. There's a help
+                                channel where you can ask questions and seek support from other community members.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io/challenges/faq-accordion-wyfFdeBwBz" target="_blank">Frontend Mentor</a>.
+            Coded by <a href="https://github.com/victoire20" target="_blank">YABA LOUO JEAN DE DIEU</a>.
+        </div>
+
+        <script>
+            const accordionButtons = document.querySelectorAll('.accordion-button')
+
+            const restartIconAnimation = (button) => {
+                button.classList.remove('accordion-button-rotate')
+                void button.offsetWidth
+                button.classList.add('accordion-button-rotate')
+            }
+
+            accordionButtons.forEach(btn => {
+                const targetSelector = btn.getAttribute('data-bs-target')
+                const targetCollapse = document.querySelector(targetSelector)
+
+                const isOpenInitial = targetCollapse.classList.contains('show').toString()
+                btn.setAttribute('aria-expanded', isOpenInitial)
+
+                btn.addEventListener('click', () => {
+                    const targetSelector = btn.getAttribute('data-bs-target')
+                    const targetCollapse = document.querySelector(targetSelector)
+
+                    const isAlreadyOpen = targetCollapse.classList.contains('show')
+
+                    document.querySelectorAll('.accordion-collapse').forEach(collapse => {
+                        collapse.classList.remove('show')
+                    });
+
+                    accordionButtons.forEach(button => {
+                        button.setAttribute('aria-expanded', 'false')
+                    })
+
+                    if (!isAlreadyOpen) {
+                        targetCollapse.classList.add('show')
+                        btn.setAttribute('aria-expanded', 'true')
+                    }
+
+                    restartIconAnimation(btn)
+                })
+            })
+        </script>
+    </main>
+</body>
+</html>
